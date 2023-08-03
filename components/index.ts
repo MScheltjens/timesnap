@@ -5,4 +5,3 @@ export * from "./hero/Hero";
 export * from "./iconProvider/IconProvider";
 export * from "./imageGrid/ImageGrid";
 export * from "./socialMedia/SocialMedia";
-export * from "./login/LoginForm";
