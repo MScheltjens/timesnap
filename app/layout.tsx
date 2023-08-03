@@ -8,6 +8,8 @@ export const metadata = {
   description: "Time Snap photography and mixed arts",
 };
 
+export const dynamic = "force-dynamic";
+
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html className="scroll-smooth" lang="en">
