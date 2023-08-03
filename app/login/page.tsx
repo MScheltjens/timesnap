@@ -6,7 +6,7 @@ import { AuthForm } from "@/components/authForm/AuthForm";
 
 export const dynamic = "force-dynamic";
 
-export default async function Login() {
+export default async function Page() {
   const supabase = createServerComponentClient<TDatabase>({ cookies });
 
   const {

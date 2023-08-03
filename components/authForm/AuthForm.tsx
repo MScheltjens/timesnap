@@ -4,11 +4,9 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import type { Session } from "@supabase/auth-helpers-nextjs";
+import { Session } from "@supabase/auth-helpers-nextjs";
 import { TDatabase } from "@/lib/supabase.types";
 import { Messages } from "@/app/login/messages";
-
-export const dynamic = "force-dynamic";
 
 export const AuthForm = ({ session }: { session: Session | null }) => {
   const [email, setEmail] = useState<string>("");
