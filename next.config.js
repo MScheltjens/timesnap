@@ -7,7 +7,7 @@ const nextConfig = {
           hostname: 'ghaiuvgnlzimzxowzzbq.supabase.co'
         },
       ],
-},
+    },
 }
 
 module.exports = nextConfig

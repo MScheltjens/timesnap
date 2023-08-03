@@ -18,6 +18,7 @@ export default function Home() {
               De dingen waarover ik mijmer, pieker, lach, huil,... probeer ik met beeld weer te geven.
               Op het moment dat ik beelden vastleg voel ik dat ze belangrijk zijn. Toch kan ik pas later een uitleg geven bij een foto. Dat geeft me meer zekerheid bij m'n werk."
         textDark
+        imgPriority
       />
       <Hero image={photography} id="photography" nextId="mixed-art" title="Photography" />
       <Hero image={mixedArt} id="mixed-art" nextId="home" title="Mixed Art" textDark />
