@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import { Footer, Header, IconProvider } from "@/components";
+import { Footer, Header } from "@/components";
 
 import "./globals.css";
 
@@ -12,11 +12,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html className="scroll-smooth" lang="en">
       <body>
-        <IconProvider>
-          <Header />
-          <main className="min-h-screen bg-background flex flex-col items-center">{children}</main>
-          <Footer />
-        </IconProvider>
+        <Header />
+        <main className="min-h-screen bg-background flex flex-col items-center">{children}</main>
+        <Footer />
       </body>
     </html>
   );
