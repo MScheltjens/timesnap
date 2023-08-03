@@ -1,3 +1,4 @@
+export * from "./authForm/AuthForm";
 export * from "./backgroundImg/BackgroundImg";
 export * from "./footer/Footer";
 export * from "./header/Header";
