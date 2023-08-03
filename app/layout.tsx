@@ -13,7 +13,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <html className="scroll-smooth" lang="en">
       <body>
         <Header />
-        <main className="min-h-screen bg-background flex flex-col items-center">{children}</main>
+        <main className="min-h-screen flex flex-col items-center">{children}</main>
         <Footer />
       </body>
     </html>
