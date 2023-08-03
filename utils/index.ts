@@ -1,5 +1,6 @@
 import photography from "../public/backgrounds/photography.jpg";
 import mixedArt from "../public/backgrounds/mixed-art.jpg";
+import { TImgBackGround } from "@/types";
 
 //format the page title for the href
 export const formatToHref = (title: string | undefined): string => {
@@ -8,7 +9,7 @@ export const formatToHref = (title: string | undefined): string => {
 };
 
 // get array of all the page backgrounds
-export const backgrounds = [
+export const backgrounds: TImgBackGround[] = [
   { imgData: photography, title: "photography" },
   { imgData: mixedArt, title: "mixed-art" },
 ];
