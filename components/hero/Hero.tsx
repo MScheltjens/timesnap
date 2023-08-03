@@ -33,8 +33,7 @@ export const Hero = ({ id, nextId, image, title, text, textDark }: Props) => {
             </div>
           )}
         </div>
-
-        <Link href={`#${nextId}`} className={`absolute ${nextId === "home" ? "top-16" : "bottom-16"} text-center`}>
+        <Link href={`#${nextId}`} className="absolute bottom-16 text-center">
           {nextId === "home" ? <ChevronUpIcon className={`h-10 w-10 hover:cursor-pointer hover:animate-ping opacity-70`} /> : <ChevronDownIcon className={`h-10 w-10 hover:cursor-pointer hover:animate-ping opacity-70`} />}
         </Link>
       </div>
