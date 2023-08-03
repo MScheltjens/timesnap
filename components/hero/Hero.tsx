@@ -29,7 +29,7 @@ export const Hero = ({ id, nextId, image, title, text, textDark }: Props) => {
               <h1 className="text-5xl mt-36 sm:mt-64 tracking-widest uppercase">
                 Time <span className="font-semibold">Snap</span>
               </h1>
-              <p className="w-5/6 h-3/6 sm:h-auto overflow-y-scroll no-scrollbar text-sm mt-8 sm:mt-24 opacity-70 text-center leading-6 sm:leading-loose">{text}</p>
+              <p className="w-5/6 h-3/6 sm:h-auto overflow-y-scroll no-scrollbar text-sm mt-8 sm:mt-24 opacity-70 text-center leading-6 sm:leading-loose scrollbar-hide">{text}</p>
             </div>
           )}
         </div>
