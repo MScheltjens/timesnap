@@ -3,6 +3,8 @@ import { Footer, Header } from "@/components";
 
 import "./globals.css";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Time Snap",
   description: "Time Snap photography and mixed arts",
