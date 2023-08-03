@@ -5,7 +5,7 @@ import { Hero } from "@/components";
 
 export default function Home() {
   return (
-    <div className="flex flex-col w-screen">
+    <div className="flex-1 flex flex-col w-screen">
       <Hero
         image={home}
         id="home"

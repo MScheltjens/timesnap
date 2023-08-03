@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
+import { Footer, Header, IconProvider } from "@/components";
 
 import "./globals.css";
-import { Footer, Header, IconProvider } from "@/components";
 
 export const metadata = {
   title: "Time Snap",
@@ -11,10 +11,10 @@ export const metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html className="scroll-smooth" lang="en">
-      <body className="flex flex-col justify-between text-primary">
+      <body>
         <IconProvider>
           <Header />
-          <main className="min-h-screen bg-background">{children}</main>
+          <main className="min-h-screen bg-background flex flex-col items-center">{children}</main>
           <Footer />
         </IconProvider>
       </body>

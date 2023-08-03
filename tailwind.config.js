@@ -15,9 +15,6 @@ module.exports = {
       fontSize: {
         'xs': '.65rem'
       },
-      textColor: {
-        'primary': 'white',
-      }
     },
   },
   variants: {
