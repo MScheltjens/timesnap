@@ -1,13 +1,12 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
-import { TDatabase } from "@/lib/supabase.types";
 import { Messages } from "./messages";
 
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
-  const supabase = createServerComponentClient<TDatabase>({ cookies });
+  const supabase = createServerComponentClient({ cookies });
 
   return (
     <div className="flex-1 flex justify-center">

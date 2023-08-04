@@ -3,7 +3,7 @@
 import { useFileUpload } from "@/hooks";
 
 export const UploadForm = () => {
-  const { handleSubmit, handleFileSelected } = useFileUpload();
+  const { handleSubmit, handleFileSelected } = useFileUpload("photography");
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">

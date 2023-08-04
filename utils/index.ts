@@ -1,7 +1,6 @@
 import photography from "../public/backgrounds/photography.jpg";
 import mixedArt from "../public/backgrounds/mixed-art.jpg";
 import { TImgBackGround } from "@/types";
-import { SupabaseClient } from "@supabase/supabase-js";
 
 //format the page title for the href
 export const formatToHref = (title: string | undefined): string => {
