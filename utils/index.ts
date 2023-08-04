@@ -14,13 +14,3 @@ export const backgrounds: TImgBackGround[] = [
   { imgData: photography, title: "photography" },
   { imgData: mixedArt, title: "mixed-art" },
 ];
-
-export const getUser = async (supabase: SupabaseClient) => {
-  const {
-    data: { user },
-    error,
-  } = await supabase.auth.getUser();
-  if (error) {
-    throw new Error(error?.message);
-  }
-};

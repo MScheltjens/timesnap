@@ -14,8 +14,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <html className="scroll-smooth" lang="en">
       <body>
         <Header />
-        <main className="min-h-screen flex flex-col items-center relative">{children}</main>
-        <Admin />
+        <main className="min-h-screen flex flex-col items-center">{children}</main>
         <Footer />
       </body>
     </html>

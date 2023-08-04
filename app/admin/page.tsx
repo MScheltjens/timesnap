@@ -1,7 +1,9 @@
-export default async function Page() {
+import { UploadForm } from "@/components";
+
+export default function Page() {
   return (
-    <div>
-      <h2>Page</h2>
+    <div className="mt-36">
+      <UploadForm />
     </div>
   );
 }
