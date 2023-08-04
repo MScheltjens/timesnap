@@ -2,20 +2,30 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
 import { TDatabase } from "@/lib/supabase.types";
-import { AuthForm } from "@/components/authForm/AuthForm";
+import { Messages } from "./messages";
 
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
   const supabase = createServerComponentClient<TDatabase>({ cookies });
 
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
   return (
-    <div className="flex-1 flex items-center justify-center">
-      <AuthForm session={session} />
+    <div className="flex-1 flex justify-center">
+      <form className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground" action="/auth/sign-in" method="post">
+        <label className="text-md" htmlFor="email">
+          Email
+        </label>
+        <input className="-md px-4 py-2 bg-inherit border mb-6" name="email" placeholder="you@example.com" required />
+        <label className="text-md" htmlFor="password">
+          Password
+        </label>
+        <input className="-md px-4 py-2 bg-inherit border mb-6" type="password" name="password" placeholder="••••••••" required />
+        <button className="bg-green-700  px-4 py-2 text-white mb-2">Sign In</button>
+        <button formAction="/auth/sign-up" className="border border-gray-700  px-4 py-2 text-white mb-2">
+          Sign Up
+        </button>
+        <Messages />
+      </form>
     </div>
   );
 }
