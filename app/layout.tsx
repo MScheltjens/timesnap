@@ -2,7 +2,6 @@ import { PropsWithChildren } from "react";
 import { Footer, Header } from "@/components";
 
 import "./globals.css";
-import { Admin } from "@/components/admin/Admin";
 
 export const metadata = {
   title: "Time Snap",

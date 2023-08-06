@@ -16,8 +16,13 @@ export const useFileUpload = (kindOfWork: "photography" | "mixed-art") => {
       if (data) {
         const { data } = supabase.storage.from(kindOfWork).getPublicUrl(file.name);
         if (data.publicUrl) {
-          console.log(data.publicUrl);
-          const { data: response, error } = await supabase.from(kindOfWork).insert({ img_url: data.publicUrl });
+          const { data: response, error } = await supabase.from(kindOfWork).insert({ img_url: data.publicUrl }).select();
+          if (response) {
+            console.log(response);
+          }
+          if (error) {
+            console.error(error);
+          }
         }
       }
       if (error) {
