@@ -10,14 +10,3 @@ export default async function page({ params }: { params: { work: string } }) {
   const { data: imageData } = (await supabase.from(params.work).select("*")) as { data: TDBImg[] };
   if (imageData) return <ImageGrid imgData={imageData} />;
 }
-
-export const generateStaticParams = async () => {
-  return [
-    {
-      work: "photography",
-    },
-    {
-      work: "mixed-art",
-    },
-  ];
-};

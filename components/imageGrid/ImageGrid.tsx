@@ -1,12 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type Props = {
   imgData: TDBImg[];
 };
 
 export const ImageGrid = ({ imgData }: Props) => {
+  const path = usePathname();
   return (
     <>
       <section className="flex justify-center items-center relative">
@@ -15,9 +18,11 @@ export const ImageGrid = ({ imgData }: Props) => {
             imgData.map(
               (image) =>
                 image && (
-                  <figure key={image.id} className="relative h-72 w-72 opacity-100 transition-all ease-in hover:cursor-pointer hover:opacity-40 hover:scale-110">
-                    <Image src={image.img_url ?? ""} alt={`${image.id}-${image.img_url}`} fill sizes="100%" className="flex items-center object-cover" />
-                  </figure>
+                  <Link href={`${path}/${image.id}`}>
+                    <figure key={image.id} className="relative h-72 w-72 opacity-100 transition-all ease-in hover:cursor-pointer hover:opacity-40 hover:scale-110">
+                      <Image src={image.img_url ?? ""} alt={`${image.id}-${image.img_url}`} fill sizes="100%" className="flex items-center object-cover" />
+                    </figure>
+                  </Link>
                 )
             )}
         </div>
