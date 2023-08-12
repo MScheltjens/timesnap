@@ -2,6 +2,9 @@ import { PropsWithChildren } from "react";
 import { Footer, Header } from "@/components";
 
 import "./globals.css";
+import { Database } from "@/lib/supabase.types";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 
 export const metadata = {
   title: "Time Snap",

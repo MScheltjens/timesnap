@@ -1,7 +1,8 @@
 import { BackgroundImg } from "@/components";
 import { backgrounds } from "@/utils";
 
-export default function Layout({ children }: React.PropsWithChildren) {
+export default function Layout({ children, params }: { children: React.ReactNode; params: { work: string } }) {
+  console.log(params);
   return (
     <div className="w-full flex flex-col items-center relative">
       <BackgroundImg backgrounds={backgrounds} />
