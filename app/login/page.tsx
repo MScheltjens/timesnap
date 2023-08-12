@@ -6,8 +6,6 @@ import { Messages } from "./messages";
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
-  const supabase = createServerComponentClient({ cookies });
-
   return (
     <div className="flex-1 flex justify-center">
       <form className="flex-1 flex flex-col w-full justify-center gap-2 text-foreground" action="/auth/sign-in" method="post">
