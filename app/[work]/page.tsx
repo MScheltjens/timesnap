@@ -11,3 +11,7 @@ export default async function page({ params }: { params: { work: string } }) {
   if (imageData) return <ImageGrid imgData={imageData} />;
   return notFound();
 }
+
+export const generateStaticParams = async () => {
+  return [{ work: "photography" }, { work: "mixed-art" }];
+};
