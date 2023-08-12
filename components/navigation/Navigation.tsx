@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import { NavItem } from "../navItem/NavItem";
-import { useSupabaseSession } from "@/hooks";
 
 export const Navigation = () => {
   const pathname = usePathname();
