@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ImageSlider } from '../imageSlider/ImageSlider';
 import { Modal } from '../modal/Modal';
 import { TDBImg } from '@/types/types';
@@ -12,11 +12,7 @@ type Props = {
 
 export const ImageGrid = ({ imgData }: Props) => {
     const [showModal, setShowModal] = useState<boolean>(false);
-    const [currentImgId, setCurrentImgId] = useState<number>(imgData[0].id);
-
-    useEffect(() => {
-        console.log({ currentImgId });
-    }, [currentImgId]);
+    const [currentImgIndex, setCurrentImgIndex] = useState<number>(0);
 
     return (
         <>
@@ -24,13 +20,13 @@ export const ImageGrid = ({ imgData }: Props) => {
                 <div className="my-24 grid gap-4 grid-cols-1 sm:grid-cols-2 sm:gap-8 md:gap-4 lg:grid-cols-3">
                     {imgData &&
                         imgData.map(
-                            (image) =>
+                            (image, i) =>
                                 image && (
                                     <figure
                                         key={image.id}
                                         onClick={() => {
                                             setShowModal(true);
-                                            setCurrentImgId(image.id);
+                                            setCurrentImgIndex(i);
                                         }}
                                         className="relative h-72 w-72 opacity-100 duration-200 transition-all ease-in hover:cursor-pointer hover:scale-105"
                                     >
@@ -47,7 +43,7 @@ export const ImageGrid = ({ imgData }: Props) => {
                 </div>
             </section>
             <Modal visible={showModal} setVisible={setShowModal}>
-                <ImageSlider images={imgData} currentImgId={currentImgId} />
+                <ImageSlider images={imgData} currentImgIndex={currentImgIndex} />
             </Modal>
         </>
     );
