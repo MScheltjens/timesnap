@@ -50,7 +50,7 @@ export const Modal = ({ children, visible, setVisible }: Props) => {
     return (
         <motion.div
             ref={overlay}
-            className="absolute z-10 inset-0 bg-black/60 h-screen w-full"
+            className="fixed z-10 inset-0 top-3 bg-black/60 h-screen w-full"
             onClick={onClick}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -59,6 +59,7 @@ export const Modal = ({ children, visible, setVisible }: Props) => {
             <motion.div
                 ref={wrapper}
                 variants={{ exit: { opacity: 0, y: '100vh' }, hidden: { opacity: 0, y: '-100vh' }, visible: { opacity: 1, y: '0' } }}
+                className="relative w-auto mx-auto h-full mt-8"
             >
                 {children}
             </motion.div>

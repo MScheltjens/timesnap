@@ -53,13 +53,13 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
                             handlePrevious();
                         }
                     }}
-                    className="absolute mt-20 mx-auto max-h-[80%] mb-24 left-0 right-0 sm:w-4/5 md:w-3/4 xl:w-3/5 sm:mt-24 object-contain"
+                    className="absolute mx-auto max-h-[80%] top-0 left-0 right-0  object-contain"
                 />
             </AnimatePresence>
-            <div className="absolute text-white top-1/2 z-20" onClick={handleNext}>
+            <div className="absolute text-white top-[40%] left-24 z-20" onClick={handleNext}>
                 left
             </div>
-            <div className="absolute text-white top-1/2 z-20" onClick={handlePrevious}>
+            <div className="absolute text-white top-[40%] z-20 right-24" onClick={handlePrevious}>
                 right
             </div>
         </>
