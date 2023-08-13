@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { MouseEventHandler, useCallback, useEffect, useRef, ReactNode, Dispatch, SetStateAction } from 'react';
 import { useScrollLock } from '@/hooks';
 
@@ -47,14 +48,20 @@ export const Modal = ({ children, visible, setVisible }: Props) => {
     if (!visible) return null;
 
     return (
-        // h-screen could be replaced with h-full if not possible to disable scrolling
-        <div ref={overlay} className={`fixed z-10 inset-0 h-screen bg-black/60`} onClick={onClick}>
-            <div
+        <motion.div
+            ref={overlay}
+            className="absolute z-10 inset-0 bg-black/60 h-screen w-full"
+            onClick={onClick}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
+            <motion.div
                 ref={wrapper}
-                className={`absolute left-1/2 top-44 -translate-x-1/2 -translate-y-1/2 w-ful h-full  sm:w-10/12 md:w-8/12 lg:w-1/2 p-6 flex justify-center items-center`}
+                variants={{ exit: { opacity: 0, y: '100vh' }, hidden: { opacity: 0, y: '-100vh' }, visible: { opacity: 1, y: '0' } }}
             >
                 {children}
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 };
