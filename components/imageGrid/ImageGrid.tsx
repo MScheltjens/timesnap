@@ -2,10 +2,15 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { ImageSlider } from '../imageSlider/ImageSlider';
 import { Modal } from '../modal/Modal';
 import { TDBImg } from '@/types/types';
 
-export const ImageGrid = ({ imgData }: { imgData: TDBImg[] }) => {
+type Props = {
+    imgData: TDBImg[];
+};
+
+export const ImageGrid = ({ imgData }: Props) => {
     const [showModal, setShowModal] = useState<boolean>(false);
 
     return (
@@ -34,7 +39,7 @@ export const ImageGrid = ({ imgData }: { imgData: TDBImg[] }) => {
                 </div>
             </section>
             <Modal visible={showModal} setVisible={setShowModal}>
-                <div className="bg-white">carrousel</div>
+                <ImageSlider imgData={imgData} />
             </Modal>
         </>
     );

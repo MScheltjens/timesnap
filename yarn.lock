@@ -1161,6 +1161,11 @@ eslint-plugin-react@^7.31.7:
     semver "^6.3.1"
     string.prototype.matchall "^4.0.8"
 
+eslint-plugin-sort-exports@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-sort-exports/-/eslint-plugin-sort-exports-0.8.0.tgz#9011ae86cd3afafbab6a25e48301a5cecf656992"
+  integrity sha512-5x7kJNjIS5bSyehFJ6Gk2gh2wUPt/rmhwDHF8JPDicSH7bvrLRFdlkhHu74YqYBjEySHYaOZVoKNP90TjI0v6w==
+
 eslint-scope@^7.2.2:
   version "7.2.2"
   resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-7.2.2.tgz#deb4f92563390f32006894af62a22dba1c46423f"
