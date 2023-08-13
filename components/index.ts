@@ -5,4 +5,5 @@ export * from "./header/Header";
 export * from "./hero/Hero";
 export * from "./imageGrid/ImageGrid";
 export * from "./modal/Modal";
+export * from "./socialIconGroup/SocialIconGroup";
 export * from "./uploadForm/UploadForm";
