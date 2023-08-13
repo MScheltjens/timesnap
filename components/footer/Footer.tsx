@@ -1,7 +1,4 @@
-import { FaEnvelope, FaFacebookSquare, FaInstagram } from "react-icons/fa";
-import Link from "next/link";
 import { Admin, SocialIconGroup } from "@/components";
-import { IconContext } from "react-icons/lib";
 
 export const Footer = () => {
   return (
