@@ -1,5 +1,5 @@
 import { StaticImageData } from 'next/image';
-import { Database } from '@/lib/supabase.types';
+import { Database } from '@/types/supabase.types';
 
 export type TImgBackGround = {
     title: string;

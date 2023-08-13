@@ -16,7 +16,7 @@ export const useScrollDirection = (offset: number): TScrollDirection => {
             setScrollDirection('');
         }
         setPrevOffset(scrollY);
-    }, [prevOffset]);
+    }, [offset, prevOffset]);
 
     useEffect(() => {
         window.addEventListener('scroll', toggleScrollDirection);
