@@ -5,7 +5,7 @@ import { FaFacebookSquare, FaInstagram, FaEnvelope } from "react-icons/fa";
 
 export const SocialIconGroup = () => {
   return (
-    <IconContext.Provider value={{ className: "hover:text-teal-700 hover:animate-bounce hover:text-2xl" }}>
+    <IconContext.Provider value={{ className: "hover:text-teal-700 hover:animate-bounce text-xl" }}>
       <Link href="https://www.facebook.com/profile.php?id=100027116332614" target="_blank">
         <FaFacebookSquare />
       </Link>
