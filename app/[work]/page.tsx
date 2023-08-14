@@ -1,20 +1,14 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
+// import { notFound } from 'next/navigation';
 import { notFound } from 'next/navigation';
 import { ImageGrid } from '@/components';
-import { TDBImg } from '@/types/types';
-
-export const dynamic = 'force-dynamic';
 
 export default async function page({ params }: { params: { work: string } }) {
-    const supabase = createServerComponentClient<TDBImg>({ cookies });
-    const { data: imageData } = (await supabase.from(params.work).select('*')) as { data: TDBImg[] };
-    if (imageData) return <ImageGrid imgData={imageData} />;
+    const res = await fetch(`http://localhost:3000/api/${params.work}`);
+    const data = await res.json();
+    if (data) return <ImageGrid imgData={data} />;
     return notFound();
 }
 
-export const generateStaticParams = async () => {
-    return [{ work: 'photography' }, { work: 'mixed-art' }];
+export const generateStaticParams = () => {
+    return [{ params: { work: 'photography' } }, { params: { work: 'mixed-arts' } }];
 };
-
-export const revalidate = 60;
