@@ -23,3 +23,5 @@ export async function generateStaticParams({ params }: { params: { work: string 
     if (imageData) return imageData.map((image) => ({ id: String(image.id) }));
     return notFound();
 }
+
+export const revalidate = 60;

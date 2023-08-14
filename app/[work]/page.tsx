@@ -16,3 +16,5 @@ export default async function page({ params }: { params: { work: string } }) {
 export const generateStaticParams = async () => {
     return [{ work: 'photography' }, { work: 'mixed-art' }];
 };
+
+export const revalidate = 60;

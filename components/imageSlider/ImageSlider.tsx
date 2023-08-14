@@ -1,6 +1,8 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { TDBImg } from '@/types/types';
 
@@ -11,6 +13,7 @@ type Props = {
 
 export const ImageSlider = ({ images, currentImgIndex }: Props) => {
     const [[page, direction], setPage] = useState<[number, number]>([currentImgIndex, 0]);
+    const pathname = usePathname();
 
     const handleNext = () => {
         if (page === images.length - 1) {
@@ -62,6 +65,9 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
             <div className="absolute text-white top-[40%] z-20 right-24" onClick={handlePrevious}>
                 right
             </div>
+            <Link href={`${pathname}/${images[page].id}`} className="absolute text-white">
+                TO PAGE
+            </Link>
         </>
     );
 };
