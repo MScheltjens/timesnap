@@ -18,7 +18,7 @@ export default async function Page({ params }: { params: { work: string; id: str
 
 export async function generateStaticParams({ params }: { params: { work: string } }) {
     const { get } = getNetwork();
-    const data = await get<TDBImg[]>(`/${params.work}?select=id`);
-    if (data) return data.map((item) => ({ id: `${item.id}`, work: params.work }));
+    const data = await get<TDBImg[]>(`/${params.work}?select=*`);
+    if (data) return data.map((item) => ({ id: String(item.id), work: params.work }));
     return notFound();
 }
