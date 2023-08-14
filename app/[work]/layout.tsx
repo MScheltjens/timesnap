@@ -10,7 +10,3 @@ export default function Layout({ children }: PropsWithChildren) {
         </div>
     );
 }
-
-export function generateStaticParams() {
-    return [{ work: 'photography' }, { work: 'mixed-art' }];
-}
