@@ -1,10 +1,11 @@
-// import { notFound } from 'next/navigation';
 import { notFound } from 'next/navigation';
 import { ImageGrid } from '@/components';
+import { getNetwork } from '@/http';
+import { TDBImg } from '@/types/types';
 
 export default async function page({ params }: { params: { work: string } }) {
-    const res = await fetch(`http://localhost:3000/api/${params.work}`);
-    const data = await res.json();
+    const { get } = getNetwork();
+    const data = await get<TDBImg[]>(`/${params.work}`);
     if (data) return <ImageGrid imgData={data} />;
     return notFound();
 }
