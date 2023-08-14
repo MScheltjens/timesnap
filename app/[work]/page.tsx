@@ -13,5 +13,3 @@ export default async function page({ params }: { params: { work: string } }) {
 export const generateStaticParams = () => {
     return [{ params: { work: 'photography' } }, { params: { work: 'mixed-arts' } }];
 };
-
-.
