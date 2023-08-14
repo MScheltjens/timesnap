@@ -5,7 +5,7 @@ import { TDBImg } from '@/types/types';
 
 export default async function page({ params }: { params: { work: string } }) {
     const { get } = getNetwork();
-    const data = await get<TDBImg[]>(`/${params.work}`);
+    const data = await get<TDBImg[]>(`/${params.work}`, { cache: 'no-cache' });
     if (data) return <ImageGrid imgData={data} />;
     return notFound();
 }

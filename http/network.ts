@@ -51,6 +51,7 @@ export const getNetwork = () => {
                 body: body ? JSON.stringify(body) : undefined,
                 credentials: 'include',
                 headers: {
+                    // we add the supabase key here with the headers
                     ['apikey']: `${process.env['NEXT_PUBLIC_SUPABASE_ANON_KEY']}`,
                     ['content-type']: 'application/json',
                     ...headers,
