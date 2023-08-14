@@ -33,7 +33,6 @@ type Body = Record<string, unknown>;
 
 type ResponseType = 'arraybuffer' | 'blob' | 'document' | 'json' | 'text' | 'stream';
 
-// eslint-disable-next-line no-undef
 type Options = Omit<RequestInit, 'body'> & {
     body?: Body;
     params?: Params;
