@@ -12,6 +12,6 @@ export default async function page({ params }: { params: { work: string } }) {
     return notFound();
 }
 
-export const generateStaticParams = () => {
-    return [{ params: { work: 'photography' } }, { params: { work: 'mixed-arts' } }];
-};
+// export const generateStaticParams = () => {
+//     return [{ params: { work: 'photography' } }, { params: { work: 'mixed-arts' } }];
+// };
