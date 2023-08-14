@@ -7,3 +7,5 @@ export default function Page() {
         </div>
     );
 }
+
+// build in the revalidate cache

@@ -5,7 +5,7 @@ const getUrl = (route: string): string => {
     if (/(http:\/\/)|(https:\/\/)|(www\.)/.test(route)) {
         return route;
     }
-    return `${process.env['NEXT_PUBLIC_SUPABASE_URL']}${route}`;
+    return `${process.env['NEXT_PUBLIC_SUPABASE_URL']}/rest/v1${route}`;
 };
 
 const addQueryStringParameter = (uri: string, key: string, value: string): string => {

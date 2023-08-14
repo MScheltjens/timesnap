@@ -5,7 +5,8 @@ import { TDBImg } from '@/types/types';
 
 export default async function Page({ params }: { params: { work: string; id: string } }) {
     const { get } = getNetwork();
-    const data = await get<TDBImg[]>(`/rest/v1/${params.work}?id=eq.${params.id}&select=*`);
+    const data = await get<TDBImg[]>(`/${params.work}?id=eq.${params.id}&select=*`);
+
     if (data)
         return (
             <>
