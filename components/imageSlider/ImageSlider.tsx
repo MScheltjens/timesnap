@@ -2,8 +2,6 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { TDBImg } from '@/types/types';
 
@@ -14,7 +12,6 @@ type Props = {
 
 export const ImageSlider = ({ images, currentImgIndex }: Props) => {
     const [[page, direction], setPage] = useState<[number, number]>([currentImgIndex, 0]);
-    const pathname = usePathname();
 
     const handleNext = () => {
         if (page === images.length - 1) {
@@ -53,8 +50,10 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
         },
     };
 
+    // TODO: make reusable for grid
+
     return (
-        <>
+        <div className="relative w-full sm:w-5/6 sm:h-5/6 lg:w-4/6 xl:w-3/6 h-4/6 mx-auto mt-24">
             <AnimatePresence initial={false} custom={direction}>
                 <motion.figure
                     key={page}
@@ -68,20 +67,19 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
                     }}
                     className="absolute left-0 top-0 w-full h-full"
                 >
-                    <figure className="relative w-full h-full">
+                    <figure className="absolute w-full h-full">
+                        {/* TODO: add placeholders for imgs */}
                         <Image src={images[page].img_url ?? ''} fill alt={images[page].img_url ?? ''} className="object-contain" />
                     </figure>
                 </motion.figure>
             </AnimatePresence>
+            {/* TODO: make btn component */}
             <div className="absolute text-white top-[40%] left-24 z-20" onClick={handleNext}>
                 left
             </div>
             <div className="absolute text-white top-[40%] z-20 right-24" onClick={handlePrevious}>
                 right
             </div>
-            <Link href={`${pathname}/${images[page].id}`} className="absolute text-white">
-                TO PAGE
-            </Link>
-        </>
+        </div>
     );
 };

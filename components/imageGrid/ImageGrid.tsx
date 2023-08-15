@@ -42,7 +42,7 @@ export const ImageGrid = ({ imgData }: Props) => {
                     )}
             </div>
 
-            <Modal visible={showModal} setVisible={setShowModal}>
+            <Modal visible={showModal} setVisible={setShowModal} onlyBackdrop>
                 <ImageSlider images={imgData} currentImgIndex={currentImgIndex} />
             </Modal>
         </section>

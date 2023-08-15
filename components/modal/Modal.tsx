@@ -8,9 +8,10 @@ type Props = {
     children: ReactNode;
     visible: boolean;
     setVisible: Dispatch<SetStateAction<boolean>>;
+    onlyBackdrop?: boolean;
 };
 
-export const Modal = ({ children, visible, setVisible }: Props) => {
+export const Modal = ({ children, visible, setVisible, onlyBackdrop }: Props) => {
     // TODO: typing
     const overlay = useRef(null);
     const wrapper = useRef(null);
@@ -50,19 +51,15 @@ export const Modal = ({ children, visible, setVisible }: Props) => {
     return (
         <motion.div
             ref={overlay}
-            className="fixed z-10 inset-0 bg-black/70 h-screen backdrop-blur-md w-full"
+            className="fixed z-10 inset-0 bg-black/70 h-screen backdrop-blur-md w-full flex"
             onClick={onClick}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            <motion.div
-                ref={wrapper}
-                variants={{ exit: { opacity: 0, y: '100vh' }, hidden: { opacity: 0, y: '-100vh' }, visible: { opacity: 1, y: '200px' } }}
-                className="relative w-full sm:w-5/6 sm:h-5/6 lg:w-4/6 xl:w-3/6  h-4/6  mx-auto  mt-24"
-            >
+            <div className={`${onlyBackdrop && 'flex-1'}`} ref={wrapper}>
                 {children}
-            </motion.div>
+            </div>
         </motion.div>
     );
 };
