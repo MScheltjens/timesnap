@@ -10,7 +10,6 @@ import logo from '@/public/TimeSnapLogo.jpg';
 export const Header = () => {
     const scrollDirection = useScrollDirection(150);
     const pathname = usePathname();
-    console.log(pathname);
 
     return (
         <header

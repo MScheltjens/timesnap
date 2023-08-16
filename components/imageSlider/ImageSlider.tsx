@@ -56,7 +56,7 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
                             handlePrevious();
                         }
                     }}
-                    className="absolute mx-auto inset-0 bg-yellow-500"
+                    className="absolute mx-auto inset-0"
                 >
                     <Image src={images[page].img_url ?? ''} alt="" fill sizes="w-full" className="object-contain" />
                 </motion.div>
@@ -81,12 +81,14 @@ const variants = {
         zIndex: 1,
     },
     enter: (direction: number) => {
+        console.log('enter', direction);
         return {
             opacity: 0,
             x: direction > 0 ? 1000 : -1000,
         };
     },
     exit: (direction: number) => {
+        console.log('exit', direction);
         return {
             opacity: 0,
             x: direction < 0 ? 1000 : -1000,

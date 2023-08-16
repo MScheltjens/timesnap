@@ -1,5 +1,5 @@
-import { supabaseClient } from '@/utils';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { supabaseClient } from '@/utils';
 
 export const useFileUpload = (kindOfWork: 'photography' | 'mixed-art') => {
     const [file, setFile] = useState<File | null>(null);
@@ -33,5 +33,5 @@ export const useFileUpload = (kindOfWork: 'photography' | 'mixed-art') => {
         if (e.target.files) setFile(e.target.files[0]);
     };
 
-    return { handleSubmit, handleFileSelected };
+    return { handleFileSelected, handleSubmit };
 };
