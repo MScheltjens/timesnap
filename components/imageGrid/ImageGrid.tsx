@@ -15,8 +15,8 @@ export const ImageGrid = ({ imgData }: Props) => {
     const [currentImgIndex, setCurrentImgIndex] = useState<number>(0);
 
     return (
-        <section className="flex w-5/6">
-            <div className="flex-1 mt-16 grid gap-4 grid-cols-2 sm:grid-cols-5 lg:grid-cols-6 border p-4">
+        <>
+            <section className="grid gap-4 grid-cols-2 sm:grid-cols-5 lg:grid-cols-6">
                 {imgData &&
                     imgData.map(
                         (image, i) =>
@@ -40,11 +40,11 @@ export const ImageGrid = ({ imgData }: Props) => {
                                 </div>
                             ),
                     )}
-            </div>
+            </section>
 
             <Modal visible={showModal} setVisible={setShowModal}>
                 <ImageSlider images={imgData} currentImgIndex={currentImgIndex} />
             </Modal>
-        </section>
+        </>
     );
 };

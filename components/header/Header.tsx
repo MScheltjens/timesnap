@@ -17,7 +17,7 @@ export const Header = () => {
                 pathname === '/' || pathname === '/mixed-art' || pathname === '/contact' ? 'text-black' : 'text-white'
             } ${scrollDirection === 'down' ? '-translate-y-full' : scrollDirection === 'up' ? 'translate-y-0' : ''} `}
         >
-            <div className="w-full px-4 flex items-center justify-between container mx-auto gap-20">
+            <div className="max-w-[90%] flex items-center justify-between container mx-auto gap-20">
                 <Link href="/">
                     <Image
                         src={logo}
