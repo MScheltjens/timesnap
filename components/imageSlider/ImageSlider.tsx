@@ -1,8 +1,10 @@
 'use client';
 
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
+import { Button } from '../button/Button';
 import { TDBImg } from '@/types/types';
 
 type Props = {
@@ -55,7 +57,7 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
     return (
         <div className="relative w-full sm:w-5/6 sm:h-5/6 lg:w-4/6 xl:w-3/6 h-4/6 mx-auto mt-24">
             <AnimatePresence initial={false} custom={direction}>
-                <motion.figure
+                <motion.div
                     key={page}
                     custom={direction}
                     variants={variants}
@@ -71,15 +73,14 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
                         {/* TODO: add placeholders for imgs */}
                         <Image src={images[page].img_url ?? ''} fill alt={images[page].img_url ?? ''} className="object-contain" />
                     </figure>
-                </motion.figure>
+                </motion.div>
             </AnimatePresence>
-            {/* TODO: make btn component */}
-            <div className="absolute text-white top-[40%] left-24 z-20" onClick={handleNext}>
-                left
-            </div>
-            <div className="absolute text-white top-[40%] z-20 right-24" onClick={handlePrevious}>
-                right
-            </div>
+            <Button className="absolute text-white  z-20 left-4  hover:animate-pulse" onClick={handleNext}>
+                <ChevronLeftIcon className="w-24 h-24" />
+            </Button>
+            <Button className="absolute text-white z-20 right-4  hover:animate-pulse" onClick={handlePrevious}>
+                <ChevronRightIcon className="w-24 h-24" />
+            </Button>
         </div>
     );
 };
