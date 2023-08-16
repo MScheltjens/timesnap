@@ -32,31 +32,10 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
         }
     };
 
-    const variants = {
-        center: {
-            opacity: 1,
-            x: 0,
-            zIndex: 1,
-        },
-        enter: (direction: number) => {
-            return {
-                opacity: 0,
-                x: direction > 0 ? 1000 : -1000,
-            };
-        },
-        exit: (direction: number) => {
-            return {
-                opacity: 0,
-                x: direction < 0 ? 1000 : -1000,
-                zIndex: 0,
-            };
-        },
-    };
-
     return (
         <>
             <AnimatePresence initial={false} custom={direction}>
-                <motion.figure
+                <motion.div
                     key={page}
                     custom={direction}
                     variants={variants}
@@ -66,12 +45,21 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
                     transition={{
                         x: { damping: 30, opacity: { duration: 0.2 }, stiffness: 300, type: 'spring' },
                     }}
-                    className="absolute left-0 top-0 w-full h-full"
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={1}
+                    onDragEnd={(e, { offset, velocity }) => {
+                        const swipe = swipePower(offset.x, velocity.x);
+                        if (swipe < -swipeConfidenceThreshold) {
+                            handleNext();
+                        } else if (swipe > swipeConfidenceThreshold) {
+                            handlePrevious();
+                        }
+                    }}
+                    className="absolute mx-auto inset-0 bg-yellow-500"
                 >
-                    <figure className="relative w-full h-full">
-                        <Image src={images[page].img_url ?? ''} fill alt={images[page].img_url ?? ''} className="object-contain" />
-                    </figure>
-                </motion.figure>
+                    <Image src={images[page].img_url ?? ''} alt="" fill sizes="w-full" className="object-contain" />
+                </motion.div>
             </AnimatePresence>
             <div className="absolute text-white top-[40%] left-24 z-20" onClick={handleNext}>
                 left
@@ -84,4 +72,38 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
             </Link>
         </>
     );
+};
+
+const variants = {
+    center: {
+        opacity: 1,
+        x: 0,
+        zIndex: 1,
+    },
+    enter: (direction: number) => {
+        return {
+            opacity: 0,
+            x: direction > 0 ? 1000 : -1000,
+        };
+    },
+    exit: (direction: number) => {
+        return {
+            opacity: 0,
+            x: direction < 0 ? 1000 : -1000,
+            zIndex: 0,
+        };
+    },
+};
+
+/**
+ * Experimenting with distilling swipe offset and velocity into a single variable, so the
+ * less distance a user has swiped, the more velocity they need to register as a swipe.
+ * Should accomodate longer swipes and short flicks without having binary checks on
+ * just distance thresholds and velocity > 0.
+ */
+
+const swipeConfidenceThreshold = 10000;
+
+const swipePower = (offset: number, velocity: number) => {
+    return Math.abs(offset) * velocity;
 };
