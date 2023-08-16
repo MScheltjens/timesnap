@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { TDBImg } from '@/types/types';
 
 type Props = {
@@ -16,21 +16,37 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
     const [[page, direction], setPage] = useState<[number, number]>([currentImgIndex, 0]);
     const pathname = usePathname();
 
-    const handleNext = () => {
+    const handleNext = useCallback(() => {
         if (page === images.length - 1) {
             setPage([0, 1]);
         } else {
             setPage([page + 1, 1]);
         }
-    };
+    }, [page, images.length]);
 
-    const handlePrevious = () => {
+    const handlePrevious = useCallback(() => {
         if (page === 0) {
             setPage([images.length - 1, -1]);
         } else {
             setPage([page - 1, -1]);
         }
-    };
+    }, [page, images.length]);
+
+    const onKeyDown = useCallback(
+        (e: KeyboardEvent) => {
+            if (e.key === 'ArrowRight') {
+                handleNext();
+            } else if (e.key === 'ArrowLeft') {
+                handlePrevious();
+            }
+        },
+        [handleNext, handlePrevious],
+    );
+
+    useEffect(() => {
+        document.addEventListener('keydown', onKeyDown);
+        return () => document.removeEventListener('keydown', onKeyDown);
+    }, [onKeyDown]);
 
     return (
         <>
