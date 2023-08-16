@@ -97,14 +97,12 @@ const variants = {
         zIndex: 1,
     },
     enter: (direction: number) => {
-        console.log('enter', direction);
         return {
             opacity: 0,
             x: direction > 0 ? 1000 : -1000,
         };
     },
     exit: (direction: number) => {
-        console.log('exit', direction);
         return {
             opacity: 0,
             x: direction < 0 ? 1000 : -1000,
