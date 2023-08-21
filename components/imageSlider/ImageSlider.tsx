@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { TDBImg } from '@/types/types';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 
 type Props = {
     images: TDBImg[];
@@ -77,11 +78,11 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
                     <Image src={images[page].img_url ?? ''} alt="" fill sizes="w-full" className="object-contain" />
                 </motion.div>
             </AnimatePresence>
-            <div className="absolute text-white top-[40%] left-24 z-20" onClick={handleNext}>
-                left
+            <div className="absolute text-white top-1/2 -left-16 z-20 hidden sm:block" onClick={handleNext}>
+                <ChevronLeftIcon className={`h-16 w-16 hover:cursor-pointer hover:animate-ping opacity-70`} />
             </div>
-            <div className="absolute text-white top-[40%] z-20 right-24" onClick={handlePrevious}>
-                right
+            <div className="absolute text-white top-1/2 z-20 -right-16 hidden sm:block" onClick={handlePrevious}>
+                <ChevronRightIcon className={`h-1-6 w-16 hover:cursor-pointer hover:animate-ping opacity-70`} />
             </div>
             <Link href={`${pathname}/${images[page].id}`} className="absolute text-white">
                 TO PAGE
