@@ -1,12 +1,12 @@
 'use client';
 
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { TDBImg } from '@/types/types';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 
 type Props = {
     images: TDBImg[];
@@ -15,6 +15,8 @@ type Props = {
 
 export const ImageSlider = ({ images, currentImgIndex }: Props) => {
     const [[page, direction], setPage] = useState<[number, number]>([currentImgIndex, 0]);
+    const [isHovering, setIsHovering] = useState<boolean>(false);
+
     const pathname = usePathname();
 
     const handleNext = useCallback(() => {
@@ -74,6 +76,8 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
                         }
                     }}
                     className="absolute mx-auto inset-0"
+                    onMouseOver={() => setIsHovering(true)}
+                    onMouseLeave={() => setIsHovering(false)}
                 >
                     <Image src={images[page].img_url ?? ''} alt="" fill sizes="w-full" className="object-contain" />
                 </motion.div>
@@ -84,9 +88,11 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
             <div className="absolute text-white top-1/2 z-20 -right-16 hidden sm:block" onClick={handlePrevious}>
                 <ChevronRightIcon className={`h-1-6 w-16 hover:cursor-pointer hover:animate-ping opacity-70`} />
             </div>
-            <Link href={`${pathname}/${images[page].id}`} className="absolute text-white">
-                TO PAGE
-            </Link>
+            {isHovering && (
+                <Link href={`${pathname}/${images[page].id}`} className="absolute text-white bottom-14 z-30 w-full flex">
+                    <div className="flex-1 h-24 w-max bg-blue-400">INFO</div>
+                </Link>
+            )}
         </>
     );
 };
