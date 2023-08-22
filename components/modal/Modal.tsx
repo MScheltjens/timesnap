@@ -12,7 +12,6 @@ type Props = {
 };
 
 export const Modal = ({ children, visible, setVisible }: Props) => {
-    // TODO: typing
     const backdrop = useRef<HTMLDivElement>(null);
     const wrapper = useRef<HTMLDivElement>(null);
     const { lockScroll, unlockScroll } = useScrollLock();
@@ -49,22 +48,18 @@ export const Modal = ({ children, visible, setVisible }: Props) => {
     if (!visible) return null;
 
     return (
-        // <motion.div
-        //     ref={backdrop}
-        //     className="fixed z-10 inset-0 bg-black/70 h-screen backdrop-blur-md w-full"
-        //     onClick={onClick}
-        //     initial={{ opacity: 0 }}
-        //     animate={{ opacity: 1 }}
-        //     exit={{ opacity: 0 }}
-        // >
         <Backdrop ref={backdrop} onClick={onClick}>
             <motion.div
+                animate={{ y: 0 }}
+                initial={{ y: '100vh' }}
+                transition={{ duration: 0.5 }}
+                className="flex w-full sm:w-5/6 sm:h-5/6 lg:w-4/6 xl:w-3/6  h-4/6  mx-auto mt-24"
                 ref={wrapper}
-                variants={{ exit: { opacity: 0, y: '100vh' }, hidden: { opacity: 0, y: '-100vh' }, visible: { opacity: 1, y: '200px' } }}
-                className="relative w-full sm:w-5/6 sm:h-5/6 lg:w-4/6 xl:w-3/6  h-4/6  mx-auto  mt-24"
             >
                 {children}
             </motion.div>
         </Backdrop>
     );
 };
+
+// we forward the ref component to the backdrop. Putting the ref logic in the backdrop component itself would make eg. forms also close

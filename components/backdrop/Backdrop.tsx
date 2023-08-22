@@ -9,7 +9,6 @@ type Props = {
 import { MouseEventHandler, MutableRefObject, ReactNode, forwardRef } from 'react';
 
 export const Backdrop = forwardRef<HTMLDivElement, Props>(({ children, onClick }, ref) => {
-    console.log(ref);
     return (
         <motion.div
             ref={ref}

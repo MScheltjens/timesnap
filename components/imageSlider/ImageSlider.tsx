@@ -1,7 +1,7 @@
 'use client';
 
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -52,7 +52,7 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
     }, [onKeyDown]);
 
     return (
-        <>
+        <motion.div className="relative flex-1">
             <AnimatePresence initial={false} custom={direction}>
                 <motion.div
                     key={page}
@@ -82,22 +82,25 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
                     <Image src={images[page].img_url ?? ''} alt="" fill sizes="w-full" className="object-contain" />
                 </motion.div>
             </AnimatePresence>
+
             <div className="absolute text-white top-1/2 -left-16 z-20 hidden sm:block" onClick={handleNext}>
                 <ChevronLeftIcon className={`h-16 w-16 hover:cursor-pointer hover:animate-ping opacity-70`} />
             </div>
+
             <div className="absolute text-white top-1/2 z-20 -right-16 hidden sm:block" onClick={handlePrevious}>
                 <ChevronRightIcon className={`h-1-6 w-16 hover:cursor-pointer hover:animate-ping opacity-70`} />
             </div>
+
             {isHovering && (
                 <Link href={`${pathname}/${images[page].id}`} className="absolute text-white bottom-14 z-30 w-full flex">
                     <div className="flex-1 h-24 w-max bg-blue-400">INFO</div>
                 </Link>
             )}
-        </>
+        </motion.div>
     );
 };
 
-const variants = {
+const variants: Variants = {
     center: {
         opacity: 1,
         x: 0,

@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 import { ImageSlider } from '../imageSlider/ImageSlider';
@@ -21,14 +22,15 @@ export const ImageGrid = ({ imgData }: Props) => {
                     imgData.map(
                         (image, i) =>
                             image && (
-                                <div key={image.id}>
-                                    <figure
-                                        onClick={() => {
-                                            setShowModal(true);
-                                            setCurrentImgIndex(i);
-                                        }}
-                                        className="relative pt-[100%] duration-200 transition-all ease-in hover:cursor-pointer hover:scale-105"
-                                    >
+                                // this div to make the 4:3 with the padding in the shild
+                                <motion.div
+                                    key={image.id}
+                                    onClick={() => {
+                                        setShowModal(true);
+                                        setCurrentImgIndex(i);
+                                    }}
+                                >
+                                    <figure className="relative pt-[100%] duration-200 transition-all ease-in hover:cursor-pointer hover:scale-105">
                                         <Image
                                             src={image.img_url ?? ''}
                                             alt={`${image.id}-${image.img_url}`}
@@ -37,7 +39,7 @@ export const ImageGrid = ({ imgData }: Props) => {
                                             className="flex items-center object-cover"
                                         />
                                     </figure>
-                                </div>
+                                </motion.div>
                             ),
                     )}
             </section>
