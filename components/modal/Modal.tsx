@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { MouseEventHandler, useCallback, useEffect, useRef, ReactNode, Dispatch, SetStateAction } from 'react';
+import { Backdrop } from '../backdrop/Backdrop';
 import { useScrollLock } from '@/hooks';
 
 type Props = {
@@ -12,17 +13,17 @@ type Props = {
 
 export const Modal = ({ children, visible, setVisible }: Props) => {
     // TODO: typing
-    const overlay = useRef(null);
-    const wrapper = useRef(null);
+    const backdrop = useRef<HTMLDivElement>(null);
+    const wrapper = useRef<HTMLDivElement>(null);
     const { lockScroll, unlockScroll } = useScrollLock();
 
     const onClick: MouseEventHandler = useCallback(
         (e) => {
-            if (e.target === overlay.current || e.target === wrapper.current) {
+            if (e.target === backdrop.current || e.target === wrapper.current) {
                 if (setVisible) setVisible(false);
             }
         },
-        [setVisible, overlay, wrapper],
+        [setVisible, backdrop, wrapper],
     );
 
     const onKeyDown = useCallback(
@@ -48,14 +49,15 @@ export const Modal = ({ children, visible, setVisible }: Props) => {
     if (!visible) return null;
 
     return (
-        <motion.div
-            ref={overlay}
-            className="fixed z-10 inset-0 bg-black/70 h-screen backdrop-blur-md w-full"
-            onClick={onClick}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-        >
+        // <motion.div
+        //     ref={backdrop}
+        //     className="fixed z-10 inset-0 bg-black/70 h-screen backdrop-blur-md w-full"
+        //     onClick={onClick}
+        //     initial={{ opacity: 0 }}
+        //     animate={{ opacity: 1 }}
+        //     exit={{ opacity: 0 }}
+        // >
+        <Backdrop ref={backdrop} onClick={onClick}>
             <motion.div
                 ref={wrapper}
                 variants={{ exit: { opacity: 0, y: '100vh' }, hidden: { opacity: 0, y: '-100vh' }, visible: { opacity: 1, y: '200px' } }}
@@ -63,6 +65,6 @@ export const Modal = ({ children, visible, setVisible }: Props) => {
             >
                 {children}
             </motion.div>
-        </motion.div>
+        </Backdrop>
     );
 };
