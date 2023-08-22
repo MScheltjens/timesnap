@@ -1,5 +1,3 @@
-// import { MouseEventHandler, ReactNode, forwardRef } from 'react';
-// export type Ref = HTMLDivElement;
 import { motion } from 'framer-motion';
 
 type Props = {
