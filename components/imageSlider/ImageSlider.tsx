@@ -15,8 +15,6 @@ type Props = {
 export const ImageSlider = ({ images, currentImgIndex }: Props) => {
     const [[page, direction], setPage] = useState<[number, number]>([currentImgIndex, 0]);
 
-    // const pathname = usePathname();
-
     const handleNext = useCallback(() => {
         if (page === images.length - 1) {
             setPage([0, 1]);
@@ -91,8 +89,6 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
         </>
     );
 };
-
-// href={`${pathname}/${images[page].id}`}
 
 const sliderVariants: Variants = {
     center: {
