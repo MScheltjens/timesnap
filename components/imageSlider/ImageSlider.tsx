@@ -50,7 +50,7 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
     return (
         <>
             <AnimatePresence initial={false} custom={direction}>
-                <motion.div
+                <motion.figure
                     key={images[page].id}
                     custom={direction}
                     variants={sliderVariants}
@@ -74,9 +74,8 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
                     className="absolute mx-auto inset-0"
                 >
                     <Image src={images[page].img_url ?? ''} alt={'no.' + images[page].id} fill sizes="w-full" className="object-contain relative" />
-
                     <ImageInfo />
-                </motion.div>
+                </motion.figure>
 
                 <button key="leftArrow" className="absolute text-white top-1/2 -left-20 z-20 hidden sm:block" onClick={handleNext}>
                     <ChevronLeftIcon className={`h-16 w-16 hover:cursor-pointer hover:animate-ping opacity-70`} />
