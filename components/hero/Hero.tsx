@@ -19,7 +19,7 @@ export const Hero = ({ id, nextId, image, title, text, textDark, imgPriority }: 
         <section id={id} className={`${textDark && 'text-black'} relative w-full h-screen flex justify-cente text-center`}>
             <Image alt={id} src={image} sizes="100vw" fill className="object-cover" priority={imgPriority} />
             <div className="flex-1 flex flex-col items-center justify-center backdrop-blur-sm">
-                {title && formattedPath && (
+                {title && (
                     <Link href={formattedPath}>
                         <h2 className="text-lg uppercase tracking-widest underline underline-offset-8">{title}</h2>
                     </Link>

@@ -11,9 +11,9 @@ export const metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
     return (
         <html className="scroll-smooth" lang="en">
-            <body>
+            <body className="flex">
                 <Header />
-                <main className="min-h-screen flex flex-col items-center">{children}</main>
+                <main className="min-h-screen flex-1 relative">{children}</main>
                 <Footer />
             </body>
         </html>

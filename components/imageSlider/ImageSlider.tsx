@@ -1,10 +1,10 @@
 'use client';
 
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import Image from 'next/image';
-import { useState } from 'react';
-import { Button } from '../button/Button';
+import { useCallback, useEffect, useState } from 'react';
+import { ImageInfo } from '../imageInfo/ImageInfo';
 import { TDBImg } from '@/types/types';
 
 type Props = {
@@ -15,72 +15,112 @@ type Props = {
 export const ImageSlider = ({ images, currentImgIndex }: Props) => {
     const [[page, direction], setPage] = useState<[number, number]>([currentImgIndex, 0]);
 
-    const handleNext = () => {
+    const handleNext = useCallback(() => {
         if (page === images.length - 1) {
             setPage([0, 1]);
         } else {
             setPage([page + 1, 1]);
         }
-    };
+    }, [page, images.length]);
 
-    const handlePrevious = () => {
+    const handlePrevious = useCallback(() => {
         if (page === 0) {
             setPage([images.length - 1, -1]);
         } else {
             setPage([page - 1, -1]);
         }
-    };
+    }, [page, images.length]);
 
-    const variants = {
-        center: {
-            opacity: 1,
-            x: 0,
-            zIndex: 1,
+    const onKeyDown = useCallback(
+        (e: KeyboardEvent) => {
+            if (e.key === 'ArrowRight') {
+                handleNext();
+            } else if (e.key === 'ArrowLeft') {
+                handlePrevious();
+            }
         },
-        enter: (direction: number) => {
-            return {
-                opacity: 0,
-                x: direction > 0 ? 1000 : -1000,
-            };
-        },
-        exit: (direction: number) => {
-            return {
-                opacity: 0,
-                x: direction < 0 ? 1000 : -1000,
-                zIndex: 0,
-            };
-        },
-    };
+        [handleNext, handlePrevious],
+    );
+
+    useEffect(() => {
+        document.addEventListener('keydown', onKeyDown);
+        return () => document.removeEventListener('keydown', onKeyDown);
+    }, [onKeyDown]);
 
     // TODO: make reusable for grid
 
     return (
         <div className="relative w-full sm:w-5/6 sm:h-5/6 lg:w-4/6 xl:w-3/6 h-4/6 mx-auto mt-24">
             <AnimatePresence initial={false} custom={direction}>
-                <motion.div
-                    key={page}
+                <motion.figure
+                    key={images[page].id}
                     custom={direction}
-                    variants={variants}
+                    variants={sliderVariants}
                     initial="enter"
                     animate="center"
                     exit="exit"
                     transition={{
                         x: { damping: 30, opacity: { duration: 0.2 }, stiffness: 300, type: 'spring' },
                     }}
-                    className="absolute left-0 top-0 w-full h-full"
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={1}
+                    onDragEnd={(e, { offset, velocity }) => {
+                        const swipe = swipePower(offset.x, velocity.x);
+                        if (swipe < -swipeConfidenceThreshold) {
+                            handleNext();
+                        } else if (swipe > swipeConfidenceThreshold) {
+                            handlePrevious();
+                        }
+                    }}
+                    className="absolute mx-auto inset-0"
                 >
-                    <figure className="absolute w-full h-full">
-                        {/* TODO: add placeholders for imgs */}
-                        <Image src={images[page].img_url ?? ''} fill alt={images[page].img_url ?? ''} className="object-contain" />
-                    </figure>
-                </motion.div>
+                    <Image src={images[page].img_url ?? ''} alt={'no.' + images[page].id} fill sizes="w-full" className="object-contain relative" />
+                    <ImageInfo />
+                </motion.figure>
+
+                <button key="leftArrow" className="absolute text-white top-1/2 -left-20 z-20 hidden sm:block" onClick={handleNext}>
+                    <ChevronLeftIcon className={`h-16 w-16 hover:cursor-pointer hover:animate-ping opacity-70`} />
+                </button>
+
+                <button key="rightArrow" className="absolute text-white top-1/2 z-20 -right-20 hidden sm:block" onClick={handlePrevious}>
+                    <ChevronRightIcon className={`w-16 hover:cursor-pointer hover:animate-ping opacity-70`} />
+                </button>
             </AnimatePresence>
-            <Button className="absolute text-white  z-20 left-4  hover:animate-pulse" onClick={handleNext}>
-                <ChevronLeftIcon className="w-24 h-24" />
-            </Button>
-            <Button className="absolute text-white z-20 right-4  hover:animate-pulse" onClick={handlePrevious}>
-                <ChevronRightIcon className="w-24 h-24" />
-            </Button>
         </div>
     );
+};
+
+const sliderVariants: Variants = {
+    center: {
+        opacity: 1,
+        x: 0,
+        zIndex: 1,
+    },
+    enter: (direction: number) => {
+        return {
+            opacity: 0,
+            x: direction > 0 ? 1000 : -1000,
+        };
+    },
+    exit: (direction: number) => {
+        return {
+            opacity: 0,
+            x: direction < 0 ? 1000 : -1000,
+            zIndex: 0,
+        };
+    },
+};
+
+/**
+ * Experimenting with distilling swipe offset and velocity into a single variable, so the
+ * less distance a user has swiped, the more velocity they need to register as a swipe.
+ * Should accomodate longer swipes and short flicks without having binary checks on
+ * just distance thresholds and velocity > 0.
+ */
+
+const swipeConfidenceThreshold = 10000;
+
+const swipePower = (offset: number, velocity: number) => {
+    return Math.abs(offset) * velocity;
 };

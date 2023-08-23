@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { MouseEventHandler, useCallback, useEffect, useRef, ReactNode, Dispatch, SetStateAction } from 'react';
+import { Backdrop } from '../backdrop/Backdrop';
 import { useScrollLock } from '@/hooks';
 
 type Props = {
@@ -11,19 +12,18 @@ type Props = {
     onlyBackdrop?: boolean;
 };
 
-export const Modal = ({ children, visible, setVisible, onlyBackdrop }: Props) => {
-    // TODO: typing
-    const overlay = useRef(null);
-    const wrapper = useRef(null);
+export const Modal = ({ children, visible, setVisible }: Props) => {
+    const backdrop = useRef<HTMLDivElement>(null);
+    const wrapper = useRef<HTMLDivElement>(null);
     const { lockScroll, unlockScroll } = useScrollLock();
 
     const onClick: MouseEventHandler = useCallback(
         (e) => {
-            if (e.target === overlay.current || e.target === wrapper.current) {
+            if (e.target === backdrop.current || e.target === wrapper.current) {
                 if (setVisible) setVisible(false);
             }
         },
-        [setVisible, overlay, wrapper],
+        [setVisible, backdrop, wrapper],
     );
 
     const onKeyDown = useCallback(
@@ -49,17 +49,18 @@ export const Modal = ({ children, visible, setVisible, onlyBackdrop }: Props) =>
     if (!visible) return null;
 
     return (
-        <motion.div
-            ref={overlay}
-            className="fixed z-10 inset-0 bg-black/70 h-screen backdrop-blur-md w-full flex"
-            onClick={onClick}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-        >
-            <div className={`${onlyBackdrop && 'flex-1'}`} ref={wrapper}>
+        <Backdrop ref={backdrop} onClick={onClick}>
+            <motion.div
+                animate={{ y: 0 }}
+                initial={{ y: '100vh' }}
+                transition={{ duration: 0.4 }}
+                className="flex w-full sm:w-5/6 sm:h-5/6 lg:w-4/6 xl:w-3/6  h-4/6  mx-auto mt-24"
+                ref={wrapper}
+            >
                 {children}
-            </div>
-        </motion.div>
+            </motion.div>
+        </Backdrop>
     );
 };
+
+// we forward the ref component to the backdrop. Putting the ref logic in the backdrop component itself would make eg. forms also close
