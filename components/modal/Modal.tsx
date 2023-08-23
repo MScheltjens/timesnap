@@ -52,7 +52,7 @@ export const Modal = ({ children, visible, setVisible }: Props) => {
             <motion.div
                 animate={{ y: 0 }}
                 initial={{ y: '100vh' }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.4 }}
                 className="flex w-full sm:w-5/6 sm:h-5/6 lg:w-4/6 xl:w-3/6  h-4/6  mx-auto mt-24"
                 ref={wrapper}
             >

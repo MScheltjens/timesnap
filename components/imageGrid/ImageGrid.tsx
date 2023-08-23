@@ -22,7 +22,7 @@ export const ImageGrid = ({ imgData }: Props) => {
                     imgData.map(
                         (image, i) =>
                             image && (
-                                // this div to make the 4:3 with the padding in the shild
+                                // this div to make the 4:3 with the padding in the shild, like a wrapper
                                 <motion.div
                                     key={image.id}
                                     onClick={() => {
@@ -37,6 +37,7 @@ export const ImageGrid = ({ imgData }: Props) => {
                                             fill
                                             sizes="(min-width: 1040px) calc(20.82vw - 11px), (min-width: 640px) calc(27.89vw - 12px), 83.44vw"
                                             className="flex items-center object-cover"
+                                            priority
                                         />
                                     </figure>
                                 </motion.div>
