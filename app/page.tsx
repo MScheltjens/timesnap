@@ -10,18 +10,26 @@ export default function Home() {
                 image={home}
                 id="home"
                 nextId="photography"
-                text="Een woord is slechts een communicatiemiddel. Een vastgelegde tijdloze term die de mens zelf heeft bepaald. Spreken is voor de meeste mensen vanzelfsprekend. Ik kan mij beter beeldend uitdrukken. Op het moment dat ik op de knop van mijn fototoestel druk, leg ik een fragment van het leven vast, terwijl ik weet dat het ondertussen alweer voorbij is.
-              Hierdoor besef ik dat het leven geen 'iets' is om in een, door de mens bepaald, vakje te stoppen.
-              Aan de hand van mijn foto's zoek ik het innelijke in het uiterlijke.
-              Niet alleen bij dingen en bij anderen, maar ook bij mezelf.
-              M'n foto's helpen om mezelf beter te begrijpen.
-              De dingen waarover ik mijmer, pieker, lach, huil,... probeer ik met beeld weer te geven.
-              Op het moment dat ik beelden vastleg voel ik dat ze belangrijk zijn. Toch kan ik pas later een uitleg geven bij een foto. Dat geeft me meer zekerheid bij m'n werk."
+                text="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"
                 textDark
                 imgPriority
+                header
             />
-            <Hero image={photography} id="photography" nextId="mixed-art" title="Photography" />
-            <Hero image={mixedArt} id="mixed-art" nextId="home" title="Mixed Art" textDark />
+            <Hero
+                image={photography}
+                id="photography"
+                nextId="mixed-art"
+                title="Photography"
+                text="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"
+            />
+            <Hero
+                image={mixedArt}
+                id="mixed-art"
+                nextId="home"
+                title="Mixed Art"
+                textDark
+                text="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"
+            />
         </div>
     );
 }

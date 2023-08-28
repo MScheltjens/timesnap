@@ -1,7 +1,6 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
-import { UploadForm } from '@/components';
+import { LoginForm, UploadForm } from '@/components';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,11 +10,5 @@ export default async function Page() {
         data: { session },
     } = await supabase.auth.getSession();
 
-    if (!session) redirect('/login');
-
-    return (
-        <div className="mt-36">
-            <UploadForm />
-        </div>
-    );
+    return <div className="flex-1 flex h-screen justify-center items-center">{session ? <UploadForm /> : <LoginForm />}</div>;
 }

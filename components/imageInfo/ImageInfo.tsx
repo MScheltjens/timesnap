@@ -2,14 +2,10 @@
 
 import { ChevronLeftIcon } from '@heroicons/react/20/solid';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export const ImageInfo = () => {
     const [visible, setVisible] = useState<boolean>(true);
-
-    useEffect(() => {
-        console.log(visible);
-    }, [visible]);
 
     return (
         <motion.section
@@ -20,7 +16,7 @@ export const ImageInfo = () => {
         >
             <div>
                 <h3 className="text-2xl">Lorem ipsum dolor sit amet</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores est nostrum expedita voluptatibus fugiat modi </p>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit</p>
             </div>
             <ChevronLeftIcon onClick={() => setVisible(false)} className="w-12 opacity-70 hover:cursor-pointer" />
         </motion.section>
