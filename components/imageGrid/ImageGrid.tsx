@@ -14,8 +14,6 @@ export const ImageGrid = ({ imgData }: Props) => {
     const [showModal, setShowModal] = useState<boolean>(false);
     const [currentImgIndex, setCurrentImgIndex] = useState<number>(0);
 
-    console.log(imgData);
-
     return (
         <>
             <section className="grid gap-4 grid-cols-2 sm:grid-cols-5 lg:grid-cols-6">

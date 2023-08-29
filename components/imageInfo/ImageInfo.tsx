@@ -12,7 +12,7 @@ export const ImageInfo = () => {
             animate={{ opacity: visible ? 1 : 0, x: visible ? 0 : -250 }}
             initial={{ opacity: 0, x: -250 }}
             transition={{ delay: 0.4, duration: 0.4, ease: 'easeInOut' }}
-            className="absolute p-4 text-white bottom-0 z-30 w-full flex bg-black/70 gap-4 font-thin"
+            className="absolute p-4 text-white bottom-0 z-30 w-full flex bg-black/80 gap-4 font-thin justify-between"
         >
             <div>
                 <h3 className="text-2xl">Lorem ipsum dolor sit amet</h3>

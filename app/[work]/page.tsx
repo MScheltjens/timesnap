@@ -9,9 +9,3 @@ export default async function page({ params }: { params: { work: string } }) {
 
     return notFound();
 }
-
-export async function generateStaticParams() {
-    return [{ work: 'photography' }, { work: 'mixed-art' }];
-}
-
-export const revalidate = 60 * 60 * 24;
