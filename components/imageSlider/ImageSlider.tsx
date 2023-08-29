@@ -72,17 +72,17 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
                             handlePrevious();
                         }
                     }}
-                    className="absolute mx-auto inset-0"
+                    className="absolute m-auto inset-0 w-full mt-28"
                 >
                     <Image src={images[page].src} alt={'no.' + images[page].src} fill sizes="w-full" className="object-contain relative" />
                     <ImageInfo />
                 </motion.figure>
 
-                <button key="leftArrow" className="absolute text-white top-1/2 -left-20 z-20 hidden sm:block" onClick={handleNext}>
+                <button key="leftArrow" className="absolute text-gray-300 top-1/2 -left-20 z-20 hidden sm:block" onClick={handleNext}>
                     <ChevronLeftIcon className={`h-16 w-16 hover:cursor-pointer hover:animate-ping opacity-70`} />
                 </button>
 
-                <button key="rightArrow" className="absolute text-white top-1/2 z-20 -right-20 hidden sm:block" onClick={handlePrevious}>
+                <button key="rightArrow" className="absolute text-gray-300 top-1/2 z-20 -right-20 hidden sm:block" onClick={handlePrevious}>
                     <ChevronRightIcon className={`w-16 hover:cursor-pointer hover:animate-ping opacity-70`} />
                 </button>
             </AnimatePresence>

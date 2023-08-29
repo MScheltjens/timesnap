@@ -1,6 +1,7 @@
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/20/solid';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
+import { Logo } from '../svgs';
 import { formatToHref } from '@/utils';
 
 type Props = {
@@ -23,9 +24,12 @@ export const Hero = ({ header, id, nextId, image, title, text, textDark }: Props
             <Image alt={id} src={image} sizes="100vw" fill className="relative object-cover" blurDataURL={image.src} placeholder="blur" />
             <div className="flex-1 flex flex-col items-center pt-[15%] backdrop-blur-sm">
                 {header && (
-                    <h1 className="text-5xl tracking-widest uppercase">
-                        Time <span className="font-semibold">Snap</span>
-                    </h1>
+                    <div className="flex items-center gap-4 mt-16">
+                        <Logo className="fill-black" />
+                        <h1 className="text-5xl tracking-widest uppercase">
+                            Time <span className="font-semibold">Snap</span>
+                        </h1>
+                    </div>
                 )}
                 {title && (
                     <Link href={formattedPath} className="text-lg uppercase tracking-widest underline underline-offset-8">

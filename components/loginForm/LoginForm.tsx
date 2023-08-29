@@ -11,7 +11,7 @@ export const LoginForm = () => {
                 Password
             </label>
             <input className="-md px-4 py-2 bg-inherit border mb-6" type="password" name="password" placeholder="••••••••" required />
-            <button className="bg-teal-700 px-4 py-2 text-white mb-2">Sign In</button>
+            <button className="bg-teal-700 px-4 py-2 text-gray-300 mb-2">Sign In</button>
             <Messages />
         </form>
     );

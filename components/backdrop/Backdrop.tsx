@@ -10,7 +10,7 @@ import { MouseEventHandler, MutableRefObject, ReactNode, forwardRef } from 'reac
 
 export const Backdrop = forwardRef<HTMLDivElement, Props>(({ children, onClick }, ref) => {
     return (
-        <div ref={ref} className="fixed z-10 inset-0 bg-black/70 h-screen backdrop-blur-md w-full" onClick={onClick}>
+        <div ref={ref} className="fixed z-10 inset-0 bg-black/70 max-h-screen backdrop-blur-md" onClick={onClick}>
             {children}
         </div>
     );

@@ -9,7 +9,7 @@ export const SocialIconGroup = () => {
         //  this icon group has its own styling (react icons, NOT heroicons, so the context can fit here for now)
         <IconContext.Provider
             value={{
-                className: 'hover:text-teal-700 hover:animate-bounce text-xl',
+                className: 'hover:text-teal-700 hover:animate-ping text-xl',
             }}
         >
             <Link href="https://www.facebook.com/profile.php?id=100027116332614" target="_blank">
