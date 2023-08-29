@@ -1,10 +1,12 @@
 'use client';
+
 import Link from 'next/link';
 import { IconContext } from 'react-icons';
 import { FaFacebookSquare, FaInstagram, FaEnvelope } from 'react-icons/fa';
 
 export const SocialIconGroup = () => {
     return (
+        //  this icon group has its own styling (react icons, NOT heroicons, so the context can fit here for now)
         <IconContext.Provider
             value={{
                 className: 'hover:text-teal-700 hover:animate-bounce text-xl',

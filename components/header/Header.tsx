@@ -27,7 +27,6 @@ export const Header = () => {
                     />
                 </Link>
                 <Navigation />
-                {/* TODO: style btn */}
             </div>
         </header>
     );

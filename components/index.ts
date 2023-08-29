@@ -1,4 +1,5 @@
 export * from './admin/Admin';
+export * from './backdrop/Backdrop';
 export * from './backgroundImg/BackgroundImg';
 export * from './footer/Footer';
 export * from './header/Header';

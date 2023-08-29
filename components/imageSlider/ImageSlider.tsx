@@ -30,6 +30,8 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
         }
     }, [page, images.length]);
 
+    // TODO: not DRY -> onKeydown aand the useEffect are also in the modal component -> make a custom hook?
+
     const onKeyDown = useCallback(
         (e: KeyboardEvent) => {
             if (e.key === 'ArrowRight') {
