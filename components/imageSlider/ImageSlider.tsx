@@ -2,13 +2,12 @@
 
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 import { ImageInfo } from '../imageInfo/ImageInfo';
-import { TDBImg } from '@/types/types';
 
 type Props = {
-    images: TDBImg[];
+    images: StaticImageData[];
     currentImgIndex: number;
 };
 
@@ -51,7 +50,7 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
         <>
             <AnimatePresence initial={false} custom={direction}>
                 <motion.figure
-                    key={images[page].id}
+                    key={images[page].src}
                     custom={direction}
                     variants={sliderVariants}
                     initial="enter"
@@ -73,7 +72,7 @@ export const ImageSlider = ({ images, currentImgIndex }: Props) => {
                     }}
                     className="absolute mx-auto inset-0"
                 >
-                    <Image src={images[page].img_url ?? ''} alt={'no.' + images[page].id} fill sizes="w-full" className="object-contain relative" />
+                    <Image src={images[page].src} alt={'no.' + images[page].src} fill sizes="w-full" className="object-contain relative" />
                     <ImageInfo />
                 </motion.figure>
 

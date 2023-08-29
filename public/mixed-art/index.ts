@@ -9,4 +9,4 @@ import mA7 from './7.jpeg';
 import mA8 from './8.jpeg';
 import mA9 from './9.jpeg';
 
-export const mixedArts: StaticImageData[] = [mA1, mA2, mA3, mA4, mA5, mA6, mA7, mA8, mA9];
+export const MIXED_ART: StaticImageData[] = [mA1, mA2, mA3, mA4, mA5, mA6, mA7, mA8, mA9];

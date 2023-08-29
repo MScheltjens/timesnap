@@ -1,13 +1,11 @@
 import { notFound } from 'next/navigation';
 import { ImageGrid } from '@/components';
-import { getNetwork } from '@/http';
-import { TDBImg } from '@/types/types';
+import { MIXED_ART } from '@/public/mixed-art';
+import { PHOTOGRAPHY } from '@/public/photography';
 
 export default async function page({ params }: { params: { work: string } }) {
-    const { get } = getNetwork();
-    const imgData = await get<TDBImg[]>(`/${params.work}?select=*`);
-
-    if (imgData) return <ImageGrid imgData={imgData} />;
+    if (params.work === 'photography') return <ImageGrid imgData={PHOTOGRAPHY} />;
+    if (params.work === 'mixed-art') return <ImageGrid imgData={MIXED_ART} />;
 
     return notFound();
 }

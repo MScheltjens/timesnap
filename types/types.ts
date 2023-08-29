@@ -1,6 +1,10 @@
 import { StaticImageData } from 'next/image';
 import { Database } from '@/types/supabase.types';
 
+export enum EWork {
+    MIXED_ART = 'mixed-art',
+    PHOTOGRAPHY = 'photography',
+}
 export type TDBError = {
     code: string;
     details: null;
