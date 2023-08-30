@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { TImgBackGround } from '@/types/types';
+import { TImgBackGround } from '@/types';
 import { formatToHref } from '@/utils';
 
 type Props = {

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getNetwork } from '@/http';
-import { TDBImg } from '@/types/types';
+import { TDBImg } from '@/types';
 
 export default async function Page({ params }: { params: { work: string; id: string } }) {
     const { get } = getNetwork();

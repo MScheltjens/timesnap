@@ -1,6 +1,7 @@
 export * from './admin/Admin';
 export * from './backdrop/Backdrop';
 export * from './backgroundImg/BackgroundImg';
+export * from './contactForm/ContactForm';
 export * from './footer/Footer';
 export * from './header/Header';
 export * from './hero/Hero';

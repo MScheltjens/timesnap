@@ -10,6 +10,12 @@ export type TDBError = {
 
 export type TDBImg = Database['public']['Tables']['mixed-art']['Row'] | Database['public']['Tables']['photography']['Row'];
 
+export type TFormData = {
+    name: string;
+    email: string;
+    message: string;
+};
+
 export type TImgBackGround = {
     title: string;
     imgData: StaticImageData;

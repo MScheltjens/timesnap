@@ -1,7 +1,8 @@
 import mixedArt from '../public/backgrounds/mixed-art.jpg';
 import photography from '../public/backgrounds/photography.jpg';
-import { TImgBackGround } from '@/types/types';
+import { TImgBackGround } from '@/types';
 
+export * from './send-email';
 export * from './supabaseClient';
 
 // get array of all the page backgrounds
