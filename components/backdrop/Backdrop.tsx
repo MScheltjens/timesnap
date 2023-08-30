@@ -1,12 +1,12 @@
 'use client';
 
+import { MouseEventHandler, MutableRefObject, ReactNode, forwardRef } from 'react';
+
 type Props = {
     children: ReactNode;
     onClick: MouseEventHandler;
     ref: MutableRefObject<null>;
 };
-
-import { MouseEventHandler, MutableRefObject, ReactNode, forwardRef } from 'react';
 
 export const Backdrop = forwardRef<HTMLDivElement, Props>(({ children, onClick }, ref) => {
     return (
