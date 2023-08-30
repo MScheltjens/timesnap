@@ -17,4 +17,3 @@ export const Backdrop = forwardRef<HTMLDivElement, Props>(({ children, onClick }
 });
 
 Backdrop.displayName = 'backdrop';
-.
