@@ -5,8 +5,10 @@ In this project I am exploring the new nextjs 13 app router functionality, toget
 
 Basically all the images could be put in the public folder. However the the photographer would like to upadate his portfolio from time to time. So an admin page is created
 
+!! Supabase is still present but will be changed for a simple login with nextAuth and Cloudinary !! (code is still in repository for demonstration purposes)
+
 - notes:
     - framer motion exit effects are not (yet) possible on page transitions within nextjs 13 (appDir)
     - within server components, the supabase connection does not cache. Therefore the calls to supabase have been converted to fetch. Nextjs has cache options built in into the fetch. This way we can use caching
     - Tailwind classes will need to be optimized in the theme
-    - still in developing fase, upload functionality not built yet
+
