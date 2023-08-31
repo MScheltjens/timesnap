@@ -4,9 +4,10 @@ import { motion } from 'framer-motion';
 
 type Props = {
     text: string;
+    className?: string;
 };
 
-export const AnimatedTitle = ({ text }: Props) => {
+export const AnimatedText = ({ text, className }: Props) => {
     const words = text.split(' ');
 
     const container = {
@@ -39,14 +40,12 @@ export const AnimatedTitle = ({ text }: Props) => {
     };
 
     return (
-        <motion.div style={{ display: 'flex', fontSize: '2rem', overflow: 'hidden' }} variants={container} initial="hidden" animate="visible">
-            <h1>
-                {words.map((word, index) => (
-                    <motion.span variants={child} style={{ marginRight: '5px' }} key={index}>
-                        {word}
-                    </motion.span>
-                ))}
-            </h1>
+        <motion.div className={`flex text-lg overflow-hidden${className}`} variants={container} initial="hidden" animate="visible">
+            {words.map((word, index) => (
+                <motion.span variants={child} style={{ marginRight: '5px' }} key={index}>
+                    {word}
+                </motion.span>
+            ))}
         </motion.div>
     );
 };

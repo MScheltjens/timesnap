@@ -1,4 +1,6 @@
 export * from './admin/Admin';
+export * from './animatedSection/AnimatedSection';
+export * from './animatedText/AnimatedText';
 export * from './backdrop/Backdrop';
 export * from './backgroundImg/BackgroundImg';
 export * from './contactForm/ContactForm';

@@ -35,9 +35,8 @@ export const ImageGrid = ({ imgData }: Props) => {
                                             alt={`${image.src}`}
                                             fill
                                             sizes="(min-width: 1040px) calc(20.82vw - 11px), (min-width: 640px) calc(27.89vw - 12px), 83.44vw"
-                                            className="flex items-center object-cover"
+                                            className="items-center object-cover"
                                             priority
-                                            blurDataURL={image.blurDataURL}
                                         />
                                     </figure>
                                 </motion.div>
